@@ -12,7 +12,7 @@ x0 = randn(1)
 P0 = diagm([1e7])
 mod1 = StateSpaceModel(F, V, G, W, x0, P0)
 
-# Test simulating 
+# Test simulating
 println("Simulating series")
 x, y = simulate(mod1, 100)
 @time x, y = simulate(mod1, 100)

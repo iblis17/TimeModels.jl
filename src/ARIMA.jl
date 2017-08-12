@@ -2,7 +2,7 @@
 # vectors of AR and MA coefficients and a number of differences.
 # This implementation is based on Section 8.3 in Brockwell and Davis 2002,
 # "Introduction to Time Series and Forecasting," 2nd ed.
-function arima_statespace{T, I<:Integer}(ar::Vector{T}, d::I, ma::Vector{T}, 
+function arima_statespace{T, I<:Integer}(ar::Vector{T}, d::I, ma::Vector{T},
 		sigma::T)
 	p = length(ar)
 	q = length(ma)
@@ -15,7 +15,7 @@ function arima_statespace{T, I<:Integer}(ar::Vector{T}, d::I, ma::Vector{T},
 	# differencing
 	if d > 0
 		A = [zeros(d - 1), 1]
-		B = [zeros(d - 1) diagm(ones(d - 1)); 
+		B = [zeros(d - 1) diagm(ones(d - 1));
 			 T[(-1.0)^(d + 1 - i) * binomial(d, d-i) for i in 0:(d - 1)]']
 		# redefine matrices to incorporate differencing into state
 		F = [F zeros(r, d); A*G B]

@@ -1,5 +1,5 @@
 function em_checkmodel(pmodel::ParametrizedSSM, params::SSMParameters)
-  
+
     allzero(x::Matrix) = all(x .== 0)
 
     m = pmodel(params)

@@ -50,7 +50,7 @@ StateSpaceModel{T}(A::Matrix{T}, V::Matrix{T}, C::Matrix{T}, W::Matrix{T},
 	  StateSpaceModel{T}(_->A, _->B, _->V, _->C, _->D, _->W, x1, P1)
 
 function show{T}(io::IO, mod::StateSpaceModel{T})
-    dx, dy = mod.nx, mod.ny 
+    dx, dy = mod.nx, mod.ny
     println("StateSpaceModel{$T}, $dx-D process x $dy-D observations")
     println("Process evolution matrix A:")
     show(mod.A(1))
@@ -93,9 +93,9 @@ end #ParametrizedMatrix
 
 function show{T}(io::IO, cpm::ParametrizedMatrix{T})
 
-    function combinestrelems(a, b) 
+    function combinestrelems(a, b)
         if (a != "") & (b != "")
-          a * " + " * b 
+          a * " + " * b
         elseif (a == "") & (b == "")
           "0"
         else

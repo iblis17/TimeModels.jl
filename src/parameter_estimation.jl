@@ -85,7 +85,7 @@ function fit{T}(y::Array{T}, pmodel::ParametrizedSSM, params::SSMParameters;
         =#
 
         if estimate_A || estimate_B || estimate_Q || estimate_x1
-            Qinv    = inv(pmodel.Q(params.Q))  
+            Qinv    = inv(pmodel.Q(params.Q))
             Vinv_   = all_x_deterministic ? I0_nx : phi(1)' * Qinv * phi(1)
         end #if ABQ
 
@@ -324,7 +324,7 @@ function fit{T}(y::Array{T}, pmodel::ParametrizedSSM, params::SSMParameters;
     ll, ll_prev = Inf, Inf
 
     while (niter > 0) && (fraction_change(ll_prev, ll) > eps)
-        ll_prev = ll 
+        ll_prev = ll
         ll      = em_kernel!(params)
         niter -= 1
     end #while
@@ -348,7 +348,7 @@ function fit{T}(y::Array{T}, model::StateSpaceModel{T}; u::Array{T}=zeros(size(y
     D, D_params = parametrize_none(model.D(1))
 
     # Q, R, P1 default to parametrized as diagonal with independent elements - any other values
-    #   are ignored / set to zero 
+    #   are ignored / set to zero
     Q, Q_params = parametrize_diag(diag(model.V(1)))
     R, R_params = parametrize_diag(diag(model.W(1)))
     P1, P1_params = parametrize_diag(diag(model.P1))
